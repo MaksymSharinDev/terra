@@ -30,13 +30,6 @@ module.exports = {
       }
     ]
   },
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: {
-      chunks: "all"
-    }
-  },
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
   },
@@ -56,6 +49,13 @@ module.exports = {
   ],
   devServer: {
     compress: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    // add cors header for enable sharedArrayBuffer
+    headers: {
+      //Cross-Origin-Opener-Policy: same-origin
+      //Cross-Origin-Embedder-Policy: require-corp
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "require-corp"
+    }
   }
 };
